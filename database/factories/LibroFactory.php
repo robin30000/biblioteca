@@ -1,0 +1,28 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Libro>
+ */
+class LibroFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+             'titulo' => $this->faker->sentence(3),
+            'isbn' => $this->faker->unique()->isbn13(),
+            'año_publicacion' => $this->faker->year(),
+            'numero_paginas' => $this->faker->numberBetween(100, 800),
+            'descripcion' => $this->faker->paragraph(),
+            'stock_disponible' => $this->faker->numberBetween(1, 20),
+        ];
+    }
+}
